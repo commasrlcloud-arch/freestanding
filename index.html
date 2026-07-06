@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comma Freestanding</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; background: #f5f5f5; color: #333; }
+        .page { max-width: 800px; margin: 0 auto; background: #fff; }
+        .header { background: #fff; padding: 30px 40px; display: flex; align-items: center; justify-content: center; border-bottom: 3px solid #3d4f5f; }
+        .header img { height: 70px; object-fit: contain; }
+        .promo-banner { background: #3d4f5f; padding: 18px 40px; text-align: center; }
+        .promo-banner h2 { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 3px; }
+        .promo-banner .sub { font-size: 13px; color: rgba(255,255,255,0.9); margin-top: 4px; letter-spacing: 1px; }
+        .brand-separator { background: #1a252e; padding: 12px 40px; margin-top: 6px; display: flex; align-items: center; gap: 16px; }
+        .brand-separator img { height: 28px; object-fit: contain; filter: brightness(0) invert(1); }
+        .brand-separator span { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 4px; }
+        .category-separator { background: #2c3a45; padding: 10px 40px; }
+        .category-separator span { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 4px; }
+        .section { padding: 20px 40px 10px; }
+        .section-title { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: #3d4f5f; text-transform: uppercase; letter-spacing: 2px; padding-bottom: 8px; border-bottom: 3px solid #c0392b; margin-bottom: 16px; display: inline-block; }
+        .product { display: flex; align-items: center; padding: 12px 16px; margin-bottom: 8px; background: #fafafa; border-radius: 8px; border-left: 4px solid #3d4f5f; }
+        .product-img-wrap { width: 80px; height: 80px; border-radius: 0; background: #fff; flex-shrink: 0; margin-right: 14px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .product-img { width: 100%; height: 100%; object-fit: contain; }
+        .product-info { flex: 1; min-width: 0; }
+        .product-code { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; color: #3d4f5f; }
+        .product-brand { color: #c0392b; }
+        .product-desc { font-size: 11px; color: #666; margin-top: 2px; line-height: 1.4; }
+        .product-qty { font-size: 10px; color: #888; margin-top: 3px; font-style: italic; }
+        .product-price { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 800; color: #c0392b; white-space: nowrap; margin-left: 16px; flex-shrink: 0; }
+        .product-price .euro { font-size: 12px; vertical-align: super; margin-right: 2px; }
+        .product-price .decimals { font-size: 10px; vertical-align: super; }
+        .footer { background: #3d4f5f; padding: 25px 40px; margin-top: 30px; text-align: center; }
+        .footer p { color: rgba(255,255,255,0.6); font-size: 12px; line-height: 1.6; }
+        .divider { height: 1px; background: linear-gradient(to right, transparent, #ddd, transparent); margin: 0 40px; }
+        @media (max-width: 600px) {
+            .header { padding: 20px 16px; }
+            .header img { height: 50px; }
+            .promo-banner { padding: 14px 16px; }
+            .brand-separator { padding: 10px 16px; }
+            .section { padding: 16px 16px 8px; }
+            .product { padding: 10px 10px; }
+            .product-img-wrap { width: 65px; height: 65px; margin-right: 10px; }
+            .product-code { font-size: 11px; }
+            .product-price { font-size: 16px; margin-left: 10px; }
+            .divider { margin: 0 16px; }
+            .footer { padding: 20px 16px; }
+        }
+        @media print {
+            @page { size: A4 portrait; margin: 12mm 10mm; }
+            body { background: #fff; }
+            .page { max-width: 100%; }
+            .product { break-inside: avoid; page-break-inside: avoid; }
+            .section-title { break-after: avoid; page-break-after: avoid; }
+            .brand-separator { break-after: avoid; page-break-after: avoid; }
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .header { padding: 16px 20px; }
+            .promo-banner { padding: 10px 20px; }
+            .section { padding: 12px 20px 6px; }
+            .footer { padding: 14px 20px; margin-top: 16px; }
+            .divider { margin: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <img src="logo_comma.png" alt="Comma Professional Kitchen">
+        </div>
+        <div class="promo-banner">
+            <h2>Freestanding</h2>
+            <div class="sub">Disponibilit&agrave; limitata &mdash; Prezzi riservati</div>
+            <div class="sub" style="margin-top:6px; font-size:11px; opacity:0.7;">Aggiornato al 3 luglio 2026</div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_haier.png" alt="Haier" onerror="this.style.display='none'">
+            <span>Haier</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Lavatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_HW100BD14979U1.jpg" alt="HW100-BD14979U1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> HW100-BD14979U1</div>
+                    <div class="product-desc">Lavatrice 10KG; 14PROGRAMMI; WIFI; INTELLIGENZA ARTIFICIALE; MOTORE DIRECT MOTION; IREFRESH; ABT; SMART DUAL SPRAY</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>553<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_HW80B14959S8U1.jpg" alt="HW80-B14959S8U1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> HW80-B14959S8U1</div>
+                    <div class="product-desc">Lavatrice 8KG, 1400 giri/min, motore a movimento diretto, classe A, antracite, L x P x A (mm) 595x583x850 - Profondità t</div>
+                    <div class="product-qty">14 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>360<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_HW100B14367UIT.jpg" alt="HW100-B14367U-IT" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> HW100-B14367U-IT</div>
+                    <div class="product-desc">Lavatrice 10KG, 1400 RPM, Motore Direct Motion, Classe A, Bianco, 12 programmi, L x P x A (mm) 595x617x850</div>
+                    <div class="product-qty">3 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>400<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_HW50BP12307.jpg" alt="HW50-BP12307" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> HW50-BP12307</div>
+                    <div class="product-desc">Lavatrice 5 KG SLIM MINI DRUM; MOTORE INVERTER; STEAM WASH, ABT, CLASSE A</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>390<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Asciugatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_HD100C367U1IT.jpg" alt="HD100-C367U1-IT" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> HD100-C367U1-IT</div>
+                    <div class="product-desc">Asciugatrice 10KG Heat Pump Inverter, Classe C, Bianco, L x P x A (mm) 595x684x845</div>
+                    <div class="product-qty">2 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>490<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_HD80A3959RS.jpg" alt="HD80-A3959R-S" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> HD80-A3959R-S</div>
+                    <div class="product-desc">Asciugatrice 8KG Heat Pump Inverter, Classe C, Bianco, L x P x A (mm) 595x684x845</div>
+                    <div class="product-qty">In arrivo (5 pz)</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>490<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Lavasciuga</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_HWD80B14979.jpg" alt="HWD80-B14979" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> HWD80-B14979</div>
+                    <div class="product-desc">Lavasciuga 8 / 5 Kg, 1400 RPM, Motore Direct Motion, Classe energetica ciclo combinato D, Bianco, L x P x A (mm) 595x548</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>400<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Cantine</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_HWS116GAE.jpg" alt="HWS116GAE" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> HWS116GAE</div>
+                    <div class="product-desc">Cantina Classe G, 115 bottiglie</div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>450<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_HWS42GDAU1.jpg" alt="HWS42GDAU1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> HWS42GDAU1</div>
+                    <div class="product-desc">Cantina 42 bottiglie Wi-Fi doppia zona</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>460<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Condizionatori</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_H1U09TAB.jpg" alt="H1U09TAB" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> H1U09TAB</div>
+                    <div class="product-desc">Condizionatore 9000 btu R32 A++/A+</div>
+                    <div class="product-qty">6 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>250<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_H1U12TAB.jpg" alt="H1U12TAB" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> H1U12TAB</div>
+                    <div class="product-desc">Condizionatore 12000 btu R32 A++/A+</div>
+                    <div class="product-qty">26 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>285<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_H1U18TAB.jpg" alt="H1U18TAB" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> H1U18TAB</div>
+                    <div class="product-desc">Condizionatore 18000 btu R32 A++/A+</div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>520<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_H1U24TAB.jpg" alt="H1U24TAB" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> H1U24TAB</div>
+                    <div class="product-desc">Condizionatore 24000 btu R32 A++/A+</div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>750<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_H2U14TAAOUT09P12.jpg" alt="H2U14TAAOUT/09+12" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> H2U14TAAOUT/09+12</div>
+                    <div class="product-desc">Condizionatore Multi split 9000 + 12000</div>
+                    <div class="product-qty">2 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>630<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_AM09AA1TAA.jpg" alt="AM09AA1TAA" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> AM09AA1TAA</div>
+                    <div class="product-desc">Fino a 25 mq P. Resa kW (raff.)	2,6 - Dimensioni UI 443x340x815</div>
+                    <div class="product-qty">7 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>300<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_AM12AA1TAA.jpg" alt="AM12AA1TAA" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Haier</span> AM12AA1TAA</div>
+                    <div class="product-desc">Fino a 40 mq P. Resa kW (raff.)	3,5 - Dimensioni UI 443x340x815</div>
+                    <div class="product-qty">7 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>340<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_hoover.png" alt="Hoover" onerror="this.style.display='none'">
+            <span>Hoover</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Lavatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_H3WS610TAMCE1S.jpg" alt="H3WS610TAMCE/1-S" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Hoover</span> H3WS610TAMCE/1-S</div>
+                    <div class="product-desc">Lavatrice H-WASH 300  10 kg,1600 giri Nuovo Motore Inverter Allergy Care  classe A Tecnologia NFC</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>340<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_H3W4102DA41S.jpg" alt="H3W4102DA4/1-S" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Hoover</span> H3W4102DA4/1-S</div>
+                    <div class="product-desc">Lavatrice 10 kg,1400 giri Nuovo Motore Inverter Allergy Care  classe A Tecnologia NFC</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>260<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Asciugatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_NDEH9A3TCBEXSS.jpg" alt="NDE H9A3TCBEXS-S" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Hoover</span> NDE H9A3TCBEXS-S</div>
+                    <div class="product-desc">Asciugatrice, programmi 15+1, Heat Pump Inverter, 9 Kg, classe A+++, Bianco, Controllo remoto avanzato e contenuti extra</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>385<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_candy.png" alt="Candy" onerror="this.style.display='none'">
+            <span>Candy</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Lavatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CSS4372DW4111.jpg" alt="CSS4372DW4/1-11" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CSS4372DW4/1-11</div>
+                    <div class="product-desc">7 kg, 1300 giri Classe B slim 45 cm</div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>235<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CS1272DW3111.jpg" alt="CS1272DW3/1-11" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CS1272DW3/1-11</div>
+                    <div class="product-desc">7 kg, 1200 giri Classe C</div>
+                    <div class="product-qty">4 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>215<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CSS129TW411.jpg" alt="CSS129TW4-11" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CSS129TW4-11</div>
+                    <div class="product-desc">9 Kg, 1200 giri Classe B Sensore Kilo Detector</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>240<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GD410G8S.jpg" alt="GD 410G8-S" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> GD 410G8-S</div>
+                    <div class="product-desc">10 kg, 1400 giri Classe A-20% Nuovo motore HAIER</div>
+                    <div class="product-qty">In arrivo (1 pz)</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>245<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_BP414BL9S.jpg" alt="BP 414BL9-S" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> BP 414BL9-S</div>
+                    <div class="product-desc">14 kg, 1400 giri Classe A-30%  Inverter Vapore</div>
+                    <div class="product-qty">In arrivo (1 pz)</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>370<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MQD410CBL911.jpg" alt="MQD 410CBL9-11" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> MQD 410CBL9-11</div>
+                    <div class="product-desc">10+1+1kg Lavatrice a carica frontale, Libera installazione, 10 kg, 1400 RPM, Classe A, Bianco, L x P x A (mm) 600x595x10</div>
+                    <div class="product-qty">4 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>660<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Asciugatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_ROEH8A2TCEXS.jpg" alt="ROE H8A2TCEX-S" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> ROE H8A2TCEX-S</div>
+                    <div class="product-desc">Asciugatrice pompa di calore- Controllo remoto avanzato e contenuti extra (Wi-Fi + BLE)</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>380<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CSOEH10A2DES.jpg" alt="CSOE H10A2DE-S" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CSOE H10A2DE-S</div>
+                    <div class="product-desc">Asciugatrice pompa di calore- Controllo remoto avanzato e contenuti extra (Wi-Fi + BLE)</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>385<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Lavastoviglie</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CF4E7L0W.jpg" alt="CF 4E7L0W" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CF 4E7L0W</div>
+                    <div class="product-desc">Lavastoviglie 14 coperti,bianca</div>
+                    <div class="product-qty">5 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>290<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Frigoriferi</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CCE4T620EX.jpg" alt="CCE4T620EX" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CCE4T620EX</div>
+                    <div class="product-desc">Frigorifero, Libera installazione, 2 porte, No Frost, Connettività: Controllo remoto avanzato e contenuti extra in App (</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>380<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Condizionatori</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CY09BR.jpg" alt="CY-09BR" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CY-09BR</div>
+                    <div class="product-desc">Condizionatore 9000 btu R32 A++/A+</div>
+                    <div class="product-qty">26 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>205<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CY12BR.jpg" alt="CY-12BR" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CY-12BR</div>
+                    <div class="product-desc">Condizionatore 12000 btu R32 A++/A+</div>
+                    <div class="product-qty">18 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>235<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Scaldabagni</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CS30VCR3EU.jpg" alt="CS30V-CR3 (EU)" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CS30V-CR3 (EU)</div>
+                    <div class="product-desc">Scaldabagno 30 litri</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>68<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CS50VCR3EU.jpg" alt="CS50V-CR3 (EU)" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CS50V-CR3 (EU)</div>
+                    <div class="product-desc">Scaldabagno 50 litri</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>85<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CS80VCR3EU.jpg" alt="CS80V-CR3 (EU)" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CS80V-CR3 (EU)</div>
+                    <div class="product-desc">Scaldabagno 80 litri</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>95<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CS100VCR3EU.jpg" alt="CS100V-CR3 (EU)" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Candy</span> CS100V-CR3 (EU)</div>
+                    <div class="product-desc">Scaldabagno 100 litri</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>110<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_lg.png" alt="LG" onerror="this.style.display='none'">
+            <span>LG</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Lavatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F4NX1008NWKAGWQPIS.jpg" alt="F4NX1008NWK.AGWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F4NX1008NWK.AGWQPIS</div>
+                    <div class="product-desc">Lavatrice 8 kg</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>310<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F4NX1009NWBAGWQPIS.jpg" alt="F4NX1009NWB.AGWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F4NX1009NWB.AGWQPIS</div>
+                    <div class="product-desc">Lavatrice 9 kg</div>
+                    <div class="product-qty">3 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>330<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F4NX5009TKBABWQPIS.jpg" alt="F4NX5009TKB.ABWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F4NX5009TKB.ABWQPIS</div>
+                    <div class="product-desc">Lavatrice Intelligente 9 kg</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>400<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F4NX5009TKCABWQPIS.jpg" alt="F4NX5009TKC.ABWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F4NX5009TKC.ABWQPIS</div>
+                    <div class="product-desc">Lavatrice Intelligente 9 kg</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>400<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F4X9009TWCEAGWQPWE.jpg" alt="F4X9009TWCE.AGWQPWE" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F4X9009TWCE.AGWQPWE</div>
+                    <div class="product-desc">Lavatrice 9 kg</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>600<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F4R3010NSWWABWQPIS.jpg" alt="F4R3010NSWW.ABWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F4R3010NSWW.ABWQPIS</div>
+                    <div class="product-desc">Lavatrice Serie R3 10 kg </div>
+                    <div class="product-qty">3 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>350<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F4X7011TWBAGWQPWE.jpg" alt="F4X7011TWB.AGWQPWE" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F4X7011TWB.AGWQPWE</div>
+                    <div class="product-desc">Lavatrice 11 kg</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>640<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F4X7013TBBAEBQPWE.jpg" alt="F4X7013TBB.AEBQPWE" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F4X7013TBB.AEBQPWE</div>
+                    <div class="product-desc">Lavatrice NERA 13 kg</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>680<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F4R3013NSWBABWQPIS.jpg" alt="F4R3013NSWB.ABWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F4R3013NSWB.ABWQPIS</div>
+                    <div class="product-desc">Lavatrice Serie R3 13 kg</div>
+                    <div class="product-qty">In arrivo</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>430<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F4R7013TSWGABWQPIS.jpg" alt="F4R7013TSWG.ABWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F4R7013TSWG.ABWQPIS</div>
+                    <div class="product-desc">Lavatrice Serie R7 13 kg </div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>490<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_F0P3020TSWCABWQVIS.jpg" alt="F0P3020TSWC.ABWQVIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> F0P3020TSWC.ABWQVIS</div>
+                    <div class="product-desc">Lava fino a 20kg in 83cm di profondità</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>800<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Asciugatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RNX1008NWBBGWQKIS.jpg" alt="RNX1008NWB.BGWQKIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> RNX1008NWB.BGWQKIS</div>
+                    <div class="product-desc">TBD</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>480<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RNX5009TKBABWQPIS.jpg" alt="RNX5009TKB.ABWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> RNX5009TKB.ABWQPIS</div>
+                    <div class="product-desc">TBD</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>630<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RNX5009TWBCAGWQPIS.jpg" alt="RNX5009TWBC.AGWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> RNX5009TWBC.AGWQPIS</div>
+                    <div class="product-desc">Asciugatrice Intelligente AI Dry 9 kg</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>530<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RNX5009TKCABWQPIS.jpg" alt="RNX5009TKC.ABWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> RNX5009TKC.ABWQPIS</div>
+                    <div class="product-desc">TBD</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>530<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RNX5010TWBCAGWQPIS.jpg" alt="RNX5010TWBC.AGWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> RNX5010TWBC.AGWQPIS</div>
+                    <div class="product-desc">Asciugatrice Intelligente AI Dry10 kg</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>680<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Lavasciuga</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_D2R3S08NSWWABWQPIS.jpg" alt="D2R3S08NSWW.ABWQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> D2R3S08NSWW.ABWQPIS</div>
+                    <div class="product-desc">Lavasciuga Slim serie R3 8/5kg</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>400<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">WashTower</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_WT1210BBFAPBQPIS.jpg" alt="WT1210BBF.APBQPIS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> WT1210BBF.APBQPIS</div>
+                    <div class="product-desc"></div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1800<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Frigoriferi</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GBBS525CEVAEVQEUZ.jpg" alt="GBBS525CEV.AEVQEUZ" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> GBBS525CEV.AEVQEUZ</div>
+                    <div class="product-desc">Apertura a filo muro 110°con cerniera Zero Clearance</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>600<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GBBSJ1CCEPAEPQEUZ.jpg" alt="GBBSJ1CCEP.AEPQEUZ" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> GBBSJ1CCEP.AEPQEUZ</div>
+                    <div class="product-desc">Apertura a filo muro 110°con cerniera Zero Clearance</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>510<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GBBS716CPYAPYQEUZ.jpg" alt="GBBS716CPY.APYQEUZ" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> GBBS716CPY.APYQEUZ</div>
+                    <div class="product-desc">Apertura a filo muro 110°con cerniera Zero Clearance</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>550<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GBBSJ21EPYAPYQEUZ.jpg" alt="GBBSJ21EPY.APYQEUZ" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> GBBSJ21EPY.APYQEUZ</div>
+                    <div class="product-desc">Apertura a filo muro 110°con cerniera Zero Clearance</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>500<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GMG860EPBEAEPQEUR.jpg" alt="GMG860EPBE.AEPQEUR" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> GMG860EPBE.AEPQEUR</div>
+                    <div class="product-desc">• Frigorifero Multidoor Slim InstaView</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1300<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GMG960EVEEAEVQEUR.jpg" alt="GMG960EVEE.AEVQEUR" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> GMG960EVEE.AEVQEUR</div>
+                    <div class="product-desc">Tecnologia Instaview</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1350<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GMG960MBEEAMBQEUR.jpg" alt="GMG960MBEE.AMBQEUR" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> GMG960MBEE.AMBQEUR</div>
+                    <div class="product-desc">Tecnologia Instaview</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1350<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GSXE90MBDDAMBQEUR.jpg" alt="GSXE90MBDD.AMBQEUR" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> GSXE90MBDD.AMBQEUR</div>
+                    <div class="product-desc">Tecnologia Instaview Door in Door</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1100<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GSLV90PZADAPZQEUT.jpg" alt="GSLV90PZAD.APZQEUT" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> GSLV90PZAD.APZQEUT</div>
+                    <div class="product-desc">LG Frigorifero Side by SideClasse energetica D</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1000<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_GSXE90EVDDAEVQEUR.jpg" alt="GSXE90EVDD.AEVQEUR" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">LG</span> GSXE90EVDD.AEVQEUR</div>
+                    <div class="product-desc">Tecnologia Instaview Door in Door</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1100<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_midea.png" alt="Midea" onerror="this.style.display='none'">
+            <span>Midea</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Lavatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MF110W60WITSLIM.jpg" alt="MF110W60/W-IT SLIM" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MF110W60/W-IT SLIM</div>
+                    <div class="product-desc">Lavatrice 6kg slim classe D 15 programmi</div>
+                    <div class="product-qty">31 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>168<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MF110W70WITSLIM.jpg" alt="MF110W70/W-IT SLIM" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MF110W70/W-IT SLIM</div>
+                    <div class="product-desc">Lavatrice 7kg slim classe D 15 programmi</div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>190<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MF110W70BAWIT.jpg" alt="MF110W70BA/W-IT" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MF110W70BA/W-IT</div>
+                    <div class="product-desc">Lavatrice 7kg motore BLDC classe A-10% 15 programmi</div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>200<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MF100W80BAWIT.jpg" alt="MF100W80BA/W-IT" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MF100W80BA/W-IT</div>
+                    <div class="product-desc">Lavatrice 8kg motore BLDC classe A-10% 15 programmi</div>
+                    <div class="product-qty">12 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>230<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MF100W90BAWIT.jpg" alt="MF100W90BA W-IT" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MF100W90BA W-IT</div>
+                    <div class="product-desc">Lavatrice 9kg motore BLDC classe A 15 programmi</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>230<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Asciugatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MD110H80WAU.jpg" alt="MD110H80/W-AU" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MD110H80/W-AU</div>
+                    <div class="product-desc">Asciugatrice 8kg A++</div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>270<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Lavastoviglie</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MFD60S121WIT.jpg" alt="MFD60S121W-IT" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MFD60S121W-IT</div>
+                    <div class="product-desc">Lavatoviglie 6 programmi 12 coperti partenza ritardata cruscotto vetro bianco 1/2 carico</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>190<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MFD60S200X1IT.jpg" alt="MFD60S200X.1-IT" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MFD60S200X.1-IT</div>
+                    <div class="product-desc">Lavatoviglie 8 programmi 14 coperti partenza ritardata cruscotto vetro bianco 1/2 carico</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>230<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Frigoriferi</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MDRB424FGD01OE.jpg" alt="MDRB424FGD01OE" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MDRB424FGD01OE</div>
+                    <div class="product-desc">COMBINATO 60 CM - h 188 cm - D - Total NO Frost - 295 Lt - Luce LED - Biano - Maniglie Integrate</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>479<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MDRB424FGD46OE.jpg" alt="MDRB424FGD46OE" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MDRB424FGD46OE</div>
+                    <div class="product-desc">COMBINATO 60 CM - h 188 cm - D - Total NO Frost - 295 Lt - Luce LED - Inox - Maniglie Integrate</div>
+                    <div class="product-qty">Nuovo &mdash; in arrivo</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>320<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MDRB600MME46.jpg" alt="MDRB600MME46" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MDRB600MME46</div>
+                    <div class="product-desc">COMBINATO 60 cm - h 201 cm - E - Total NO Frost - 326 Lt - Display digitale - Luce LED - Inox</div>
+                    <div class="product-qty">Nuovo &mdash; in arrivo</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>375<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MDRB489FGD46OE.jpg" alt="MDRB489FGD46OE" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MDRB489FGD46OE</div>
+                    <div class="product-desc">COMBINATO 60 cm - h 201 cm - D - Total NO Frost - 330 Lt - Display digitale - Luce LED - Inox</div>
+                    <div class="product-qty">2 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>350<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MDRB593FGE46.jpg" alt="MDRB593FGE46" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MDRB593FGE46</div>
+                    <div class="product-desc">COMBINATO 70 cm -no frost nuova classe efficienza energetica E capacità frigo 316 l freezer 119 l display sistema freeze</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>450<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MDRT489MTE02E.jpg" alt="MDRT489MTE02E" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> MDRT489MTE02E</div>
+                    <div class="product-desc">DOPPIA PORTA  172x60x70 /A++/243L (190+44) INOX</div>
+                    <div class="product-qty">11 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>330<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Condizionatori</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CESK105.jpg" alt="CE-SK105" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> CE-SK105</div>
+                    <div class="product-desc">Modulo wi-fi per condizionatori Midea</div>
+                    <div class="product-qty">23 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>15<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_EUOSK103.jpg" alt="EU-OSK103" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Midea</span> EU-OSK103</div>
+                    <div class="product-desc">Modulo wi-fi per condizionatori Midea</div>
+                    <div class="product-qty">26 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>15<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_mk.png" alt="Master Kitchen" onerror="this.style.display='none'">
+            <span>Master Kitchen</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Lavastoviglie</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MKDWFS607014ESILE.jpg" alt="MKDW FS607014 E SIL E" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Master Kitchen</span> MKDW FS607014 E SIL E</div>
+                    <div class="product-desc">Lavatoviglie 7 programmi 14 coperti partenza ritardata cruscotto vetro SILVER</div>
+                    <div class="product-qty">9 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>220<span class="decimals">,00</span></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="section-title">Frigoriferi</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MKRF241D55STEWH.jpg" alt="MKRF 241D55 ST E WH" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Master Kitchen</span> MKRF 241D55 ST E WH</div>
+                    <div class="product-desc">DOPPIA PORTA  143x54,5x55,5 /A++/243L (190+44) white</div>
+                    <div class="product-qty">49 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>155<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MKRF241D55STEXS.jpg" alt="MKRF 241D55 ST E XS" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Master Kitchen</span> MKRF 241D55 ST E XS</div>
+                    <div class="product-desc">DOPPIA PORTA  143x54,5x55,5 /A++/243L (190+44) inox</div>
+                    <div class="product-qty">12 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>160<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_daikin.png" alt="Daikin" onerror="this.style.display='none'">
+            <span>Daikin</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Condizionatori</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_ATXF25E5V1B.jpg" alt="ATXF25E5V1B" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Daikin</span> ATXF25E5V1B</div>
+                    <div class="product-desc">Condizionatore 9000 btu R32 A++/A+ no wi-fi</div>
+                    <div class="product-qty">15 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>395<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_ATXF35E5V1B.jpg" alt="ATXF35E5V1B" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Daikin</span> ATXF35E5V1B</div>
+                    <div class="product-desc">Condizionatore 12000 btu R32  A++/A+ no wi-fi</div>
+                    <div class="product-qty">3 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>470<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_ATXF50A2V1B.jpg" alt="ATXF50A2V1B" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Daikin</span> ATXF50A2V1B</div>
+                    <div class="product-desc">Condizionatore 18000 btu R32  A++/A+ no wi-fi</div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>745<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_mitsubishi.png" alt="Mitsubishi" onerror="this.style.display='none'">
+            <span>Mitsubishi</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Condizionatori</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MSZHR25VFK.jpg" alt="MSZHR25VFK" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Mitsubishi</span> MSZHR25VFK</div>
+                    <div class="product-desc">Condizionatore 9000 btu R32 A++/A+ wi-fi</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>425<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MSZHR35VFK.jpg" alt="MSZHR35VFK" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Mitsubishi</span> MSZHR35VFK</div>
+                    <div class="product-desc">Condizionatore 12000 btu R32 A++/A+ wi-fi</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>490<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MSZHR50VFK.jpg" alt="MSZHR50VFK" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Mitsubishi</span> MSZHR50VFK</div>
+                    <div class="product-desc">Condizionatore 18000 btu R32 A++/A+ wi-fi</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>810<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MSZDW25VF.jpg" alt="MSZDW25VF" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Mitsubishi</span> MSZDW25VF</div>
+                    <div class="product-desc">Condizionatore 12000 btu R32 A++/A+ no wi-fi</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>390<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MSZDW35VF.jpg" alt="MSZDW35VF" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Mitsubishi</span> MSZDW35VF</div>
+                    <div class="product-desc">Condizionatore 18000 btu R32 A++/A+ no wi-fi</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>450<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_samsung.png" alt="Samsung" onerror="this.style.display='none'">
+            <span>Samsung</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Frigoriferi</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RF65A977FSR.jpg" alt="RF65A977FSR" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Samsung</span> RF65A977FSR</div>
+                    <div class="product-desc">564lt Triple&amp;Metal Cooling </div>
+                    <div class="product-qty">2 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>2400<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_sharp.png" alt="Sharp" onerror="this.style.display='none'">
+            <span>Sharp</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Frigoriferi</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_SJPX830ASL.jpg" alt="SJ-PX830ASL" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Sharp</span> SJ-PX830ASL</div>
+                    <div class="product-desc"></div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1900<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_daewoo.png" alt="Daewoo" onerror="this.style.display='none'">
+            <span>Daewoo</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Lavatrici</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_WM610T0WU0IT.jpg" alt="WM610T0WU0IT" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Daewoo</span> WM610T0WU0IT</div>
+                    <div class="product-desc">B 6kg</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>185<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_WM710T0WU0IT.jpg" alt="WM710T0WU0IT" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Daewoo</span> WM710T0WU0IT</div>
+                    <div class="product-desc">B 7kg</div>
+                    <div class="product-qty">Su ordinazione</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>190<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_grf.png" alt="GRF" onerror="this.style.display='none'">
+            <span>GRF</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Frigoriferi</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CC83833S.jpg" alt="CC83833S" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> CC83833S</div>
+                    <div class="product-desc">417 lt - classe F - 83,6x63,6x183</div>
+                    <div class="product-qty">6 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>650<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_CB91836X.jpg" alt="CB91836X" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> CB91836X</div>
+                    <div class="product-desc">490lt - classe E - 91,1x63,6x183</div>
+                    <div class="product-qty">3 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>900<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RTC8459WJBG1.jpg" alt="RTC8459WJBG1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> RTC8459WJBG1</div>
+                    <div class="product-desc">466lt - classe E - 844x598x1930 (s/porte p538)</div>
+                    <div class="product-qty">13 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1250<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RTC8459WJWG1.jpg" alt="RTC8459WJWG1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> RTC8459WJWG1</div>
+                    <div class="product-desc">466lt - classe E - 844x598x1930 (s/porte p538)</div>
+                    <div class="product-qty">4 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1250<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RTC8459WJBX1.jpg" alt="RTC8459WJBX1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> RTC8459WJBX1</div>
+                    <div class="product-desc">466lt - classe E - 844x598x1930 (s/porte p538)</div>
+                    <div class="product-qty">2 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1250<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RTC8459WJIX1.jpg" alt="RTC8459WJIX1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> RTC8459WJIX1</div>
+                    <div class="product-desc">466lt - classe E - 844x598x1930 (s/porte p538)</div>
+                    <div class="product-qty">20 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1250<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RTC8459WJRG1.jpg" alt="RTC8459WJRG1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> RTC8459WJRG1</div>
+                    <div class="product-desc">466lt - classe E - 844x598x1930 (s/porte p538)</div>
+                    <div class="product-qty">8 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1250<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RTM7659WJBG1.jpg" alt="RTM7659WJBG1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> RTM7659WJBG1</div>
+                    <div class="product-desc">412lt - classe E - 767x598x1930 (s/porte p538)</div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1325<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_RTM7659WJRG1.jpg" alt="RTM7659WJRG1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> RTM7659WJRG1</div>
+                    <div class="product-desc">412lt - classe E - 767x598x1930 (s/porte p538)</div>
+                    <div class="product-qty">1 pz disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1325<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_MSLC916091BX1.jpg" alt="MSLC916091BX1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> MSLC916091BX1</div>
+                    <div class="product-desc">542lt - classe E - 911x598x1912 (s/porte p538) Produttore ghiaccio</div>
+                    <div class="product-qty">2 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1350<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_ASLC916093IX1.jpg" alt="ASLC916093IX1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> ASLC916093IX1</div>
+                    <div class="product-desc">522lt - classe E - 914x598x1930 (s/porte p538)</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1150<span class="decimals">,00</span></div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_ASLF916093RG1.jpg" alt="ASLF916093RG1" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">GRF</span> ASLF916093RG1</div>
+                    <div class="product-desc">521lt - classe E - 914x598x1930 (s/porte p538)</div>
+                    <div class="product-qty">Disponibile</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>1150<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="brand-separator">
+            <img src="logo_gorenje.png" alt="Gorenje" onerror="this.style.display='none'">
+            <span>Gorenje</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Frigoriferi</div>
+
+            <div class="product">
+                <div class="product-img-wrap">
+                    <img class="product-img" src="img_NRM8181UX.jpg" alt="NRM8181UX" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <div class="product-code"><span class="product-brand">Gorenje</span> NRM8181UX</div>
+                    <div class="product-desc">French Door  794×706×1817 mm - Cl. F - total no frost plus - Funzione MultiFlow - • Funzione superCOOL - Sistema di cont</div>
+                    <div class="product-qty">3 pz disponibili</div>
+                </div>
+                <div class="product-price"><span class="euro">&euro;</span>700<span class="decimals">,00</span></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Offerta valida fino ad esaurimento scorte.<br>
+            Prezzi IVA esclusa.<br>
+            Per info e ordini contattare il vostro agente di zona.</p>
+        </div>
+    </div>
+</body>
+</html>
