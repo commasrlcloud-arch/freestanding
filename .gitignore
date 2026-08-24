@@ -1,6 +1,3 @@
-__pycache__/
-*.pyc
-.DS_Store
-download_*.py
-generate.py
-normalize_images.py
+CLAUDE.md
+.claude/
+*.xlsx
