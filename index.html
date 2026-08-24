@@ -54,9 +54,8 @@
             .page { max-width: 100%; }
             .product { break-inside: avoid; page-break-inside: avoid; }
             .section-title { break-after: avoid; page-break-after: avoid; }
-            .brand-separator { break-after: avoid; page-break-after: avoid; break-before: page; page-break-before: always; }
-            .promo-banner + .brand-separator, .brand-flow { break-before: auto; page-break-before: auto; }
-            .brand-flow { margin-top: 14px; }
+            .brand-separator { break-after: avoid; page-break-after: avoid; break-inside: avoid; page-break-inside: avoid; margin-top: 8px; padding: 7px 20px; }
+            .promo-banner + .brand-separator { margin-top: 0; }
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .header { padding: 16px 20px; }
             .promo-banner { padding: 10px 20px; }
