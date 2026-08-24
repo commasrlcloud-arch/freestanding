@@ -54,13 +54,18 @@
             .page { max-width: 100%; }
             .product { break-inside: avoid; page-break-inside: avoid; }
             .section-title { break-after: avoid; page-break-after: avoid; }
-            .section { break-before: page; page-break-before: always; }
             .brand-separator { break-after: avoid; page-break-after: avoid; break-before: page; page-break-before: always; }
-            .brand-separator + .section { break-before: auto; page-break-before: auto; }
+            .promo-banner + .brand-separator, .brand-flow { break-before: auto; page-break-before: auto; }
+            .brand-flow { margin-top: 14px; }
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .header { padding: 16px 20px; }
             .promo-banner { padding: 10px 20px; }
-            .section { padding: 12px 20px 6px; }
+            .section { padding: 7px 20px 3px; }
+            .section-title { margin-bottom: 9px; padding-bottom: 5px; }
+            .keep-together { break-inside: avoid; page-break-inside: avoid; }
+            .product { padding: 7px 12px; margin-bottom: 4px; }
+            .product-img-wrap { width: 58px; height: 58px; margin-right: 11px; }
+            .product-desc { font-size: 10.5px; }
             .footer { padding: 14px 20px; margin-top: 16px; }
             .divider { margin: 0 20px; }
         }
@@ -82,8 +87,8 @@
             <span style="display:none">Haier</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavatrici</div>
-
 
             <div class="product">
                 <div class="product-img-wrap">
@@ -95,6 +100,7 @@
                     <div class="product-qty">1 pz disponibile</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>315<span class="decimals">,00</span></div>
+            </div>
             </div>
             <div class="product">
                 <div class="product-img-wrap">
@@ -134,6 +140,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Asciugatrici</div>
 
             <div class="product">
@@ -146,6 +153,7 @@
                     <div class="product-qty">In arrivo (5 pz)</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>490<span class="decimals">,00</span></div>
+            </div>
             </div>
             <div class="product">
                 <div class="product-img-wrap">
@@ -162,6 +170,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavasciuga</div>
 
             <div class="product">
@@ -175,9 +184,11 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>400<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Cantine</div>
 
             <div class="product">
@@ -190,6 +201,7 @@
                     <div class="product-qty">1 pz disponibile</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>445<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -206,6 +218,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Condizionatori</div>
 
             <div class="product">
@@ -218,6 +231,7 @@
                     <div class="product-qty">Su ordinazione</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>250<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -298,6 +312,7 @@
             <span style="display:none">Candy</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavatrici</div>
 
             <div class="product">
@@ -310,6 +325,7 @@
                     <div class="product-qty">3 pz disponibili</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>215<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -374,6 +390,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavastoviglie</div>
 
             <div class="product">
@@ -387,9 +404,11 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>290<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Frigoriferi</div>
 
             <div class="product">
@@ -403,9 +422,11 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>380<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Condizionatori</div>
 
             <div class="product">
@@ -418,6 +439,7 @@
                     <div class="product-qty">24 pz disponibili</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>205<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -439,6 +461,7 @@
             <span style="display:none">Hisense</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavatrici</div>
 
             <div class="product">
@@ -451,6 +474,7 @@
                     <div class="product-qty">Su ordinazione</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>215<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -491,6 +515,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavasciuga</div>
 
             <div class="product">
@@ -503,6 +528,7 @@
                     <div class="product-qty">Su ordinazione</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>350<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -519,6 +545,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Frigoriferi</div>
 
             <div class="product">
@@ -531,6 +558,7 @@
                     <div class="product-qty">Su ordinazione</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>130<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -667,6 +695,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Congelatori</div>
 
             <div class="product">
@@ -679,6 +708,7 @@
                     <div class="product-qty">Su ordinazione</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>130<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -743,6 +773,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Cantine</div>
 
             <div class="product">
@@ -756,6 +787,7 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>500<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
 
         <div class="brand-separator">
@@ -763,6 +795,7 @@
             <span style="display:none">LG</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavatrici</div>
 
             <div class="product">
@@ -775,6 +808,7 @@
                     <div class="product-qty">Su ordinazione</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>310<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -899,6 +933,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Asciugatrici</div>
 
             <div class="product">
@@ -911,6 +946,7 @@
                     <div class="product-qty">Su ordinazione</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>480<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -963,6 +999,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavasciuga</div>
 
             <div class="product">
@@ -976,9 +1013,11 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>400<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">WashTower</div>
 
             <div class="product">
@@ -992,9 +1031,11 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>1800<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Frigoriferi</div>
 
             <div class="product">
@@ -1007,6 +1048,7 @@
                     <div class="product-qty">1 pz disponibile</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>500<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -1123,6 +1165,7 @@
             <span style="display:none">Midea</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavatrici</div>
 
             <div class="product">
@@ -1135,6 +1178,7 @@
                     <div class="product-qty">46 pz disponibili</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>168<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -1176,6 +1220,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Asciugatrici</div>
 
             <div class="product">
@@ -1189,11 +1234,12 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>270<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavastoviglie</div>
-
 
             <div class="product">
                 <div class="product-img-wrap">
@@ -1206,9 +1252,11 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>230<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Frigoriferi</div>
 
             <div class="product">
@@ -1221,6 +1269,7 @@
                     <div class="product-qty">5 pz disponibili</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>125<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -1286,6 +1335,7 @@
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Accessori Condizionatori</div>
 
             <div class="product">
@@ -1298,6 +1348,7 @@
                     <div class="product-qty">23 pz disponibili</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>15<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -1313,11 +1364,12 @@
             </div>
         </div>
 
-        <div class="brand-separator">
+        <div class="brand-separator brand-flow">
             <img src="logo_mk_w.png" alt="Master Kitchen" onerror="this.nextElementSibling.style.display='inline'">
             <span style="display:none">Master Kitchen</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Lavastoviglie</div>
 
             <div class="product">
@@ -1331,9 +1383,11 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>220<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Frigoriferi</div>
 
             <div class="product">
@@ -1347,14 +1401,16 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>155<span class="decimals">,00</span></div>
             </div>
+            </div>
 
         </div>
 
-        <div class="brand-separator">
+        <div class="brand-separator brand-flow">
             <img src="logo_daikin_w.png" alt="Daikin" onerror="this.nextElementSibling.style.display='inline'">
             <span style="display:none">Daikin</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Condizionatori</div>
 
             <div class="product">
@@ -1367,6 +1423,7 @@
                     <div class="product-qty">14 pz disponibili</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>395<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -1383,11 +1440,12 @@
 
         </div>
 
-        <div class="brand-separator">
+        <div class="brand-separator brand-flow">
             <img src="logo_samsung_w.png" alt="Samsung" onerror="this.nextElementSibling.style.display='inline'">
             <span style="display:none">Samsung</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Frigoriferi</div>
 
             <div class="product">
@@ -1401,13 +1459,15 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>2400<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
 
-        <div class="brand-separator">
+        <div class="brand-separator brand-flow">
             <img src="logo_sharp_w.png" alt="Sharp" onerror="this.nextElementSibling.style.display='inline'">
             <span style="display:none">Sharp</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Frigoriferi</div>
 
             <div class="product">
@@ -1421,6 +1481,7 @@
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>1900<span class="decimals">,00</span></div>
             </div>
+            </div>
         </div>
 
         <div class="brand-separator">
@@ -1428,6 +1489,7 @@
             <span style="display:none">GRF</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Frigoriferi</div>
 
             <div class="product">
@@ -1440,6 +1502,7 @@
                     <div class="product-qty">4 pz disponibili</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>650<span class="decimals">,00</span></div>
+            </div>
             </div>
 
             <div class="product">
@@ -1575,11 +1638,12 @@
             </div>
         </div>
 
-        <div class="brand-separator">
+        <div class="brand-separator brand-flow">
             <img src="logo_gorenje_w.png" alt="Gorenje" onerror="this.nextElementSibling.style.display='inline'">
             <span style="display:none">Gorenje</span>
         </div>
         <div class="section">
+            <div class="keep-together">
             <div class="section-title">Frigoriferi</div>
 
             <div class="product">
@@ -1592,6 +1656,7 @@
                     <div class="product-qty">2 pz disponibili</div>
                 </div>
                 <div class="product-price"><span class="euro">&euro;</span>700<span class="decimals">,00</span></div>
+            </div>
             </div>
         </div>
 
